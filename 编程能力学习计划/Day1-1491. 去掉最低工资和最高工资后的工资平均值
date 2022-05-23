@@ -1,0 +1,15 @@
+// https://leetcode.cn/problems/average-salary-excluding-the-minimum-and-maximum-salary/
+
+class Solution {
+    public double average(int[] salary) {
+        double sum=0;
+        double max=Integer.MIN_VALUE;
+        double min=Integer.MAX_VALUE;
+        for(int num:salary){
+            sum+=num;
+            max=Math.max(max,num);
+            min=Math.min(min,num);
+        }
+        return (sum-min-max)/(salary.length-2);
+    }
+}
