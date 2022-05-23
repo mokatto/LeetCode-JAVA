@@ -1,0 +1,34 @@
+// https://leetcode.cn/problems/count-odd-numbers-in-an-interval-range/
+
+// 根据区间端点不同情况判断
+class Solution {
+    public int countOdds(int low, int high) {
+        int count=0;
+        if(low%2==1){
+            count++;
+        }
+        if(high%2==1){
+            count++;
+        }
+        int num=high-low-1;
+        if(num%2==0){
+            count+=num/2;
+        }else if(low%2==1&&high%2==1){
+            count+=(num-1)/2;
+        }else{
+            count+=(num+1)/2;
+        }
+        return count;
+    }
+}
+
+//官解：前缀和
+class Solution {
+    public int countOdds(int low, int high) {
+        return pre(high)-pre(low-1);
+    }
+
+    public int pre(int x){
+        return (x+1)/2;
+    }
+}
